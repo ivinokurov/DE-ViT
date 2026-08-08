@@ -20,8 +20,10 @@ divit/
 │   ├── divit.py         # Архитектура DI-ViT (backbone, головки, внимание)
 │   └── losses.py        # Многокомпонентная функция потерь
 └── utils/               # Вспомогательные утилиты
-    ├── __init__.py      # Инициализация модуля utils
-    └── metrics.py       # Метрики качества (mAP, FPR, FNR, bootstrap)
+│   ├── __init__.py      # Инициализация модуля utils
+│   └── metrics.py       # Метрики качества (mAP, FPR, FNR, bootstrap)
+└── images/              # Изображения архитектуры и результаты (пока их нет)
+    └── architecture.pdf # Схема общей архитектуры DI-ViT
 ```
 
 ## Установка
