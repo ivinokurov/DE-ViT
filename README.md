@@ -23,7 +23,7 @@ divit/
 │   ├── __init__.py      # Инициализация модуля utils
 │   └── metrics.py       # Метрики качества (mAP, FPR, FNR, bootstrap)
 ├── images/              # Изображения архитектуры и результаты
-│   └── architecture.pdf # Схема общей архитектуры DI-ViT
+    └── architecture.pdf # Схема общей архитектуры DI-ViT
 ```
 
 ## Установка
