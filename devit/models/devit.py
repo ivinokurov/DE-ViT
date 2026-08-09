@@ -1,5 +1,5 @@
 """
-Деформационно-инвариантный визуальный трансформер (DI-ViT).
+Деформационно-инвариантный визуальный трансформер (DE-ViT).
 
 Основная архитектура модели с иерархическим backbone, деформируемым вниманием
 и раздельными полями смещения для крон деревьев и их теней.
@@ -372,7 +372,7 @@ class TransformerBlock(nn.Module):
 
 class HierarchicalBackbone(nn.Module):
     """
-    Иерархический backbone DI-ViT с деформируемым вниманием.
+    Иерархический backbone DE-ViT с деформируемым вниманием.
     
     Этапы:
     1. H/4 x W/4 x 64, 2 блока, жёсткое оконное внимание
@@ -635,9 +635,9 @@ class ShadowConnectionHead(nn.Module):
         return self.head(combined)
 
 
-class DIViT(nn.Module):
+class DEViT(nn.Module):
     """
-    Deformation-Invariant Visual Transformer (DI-ViT)
+    Deformation-Invariant Visual Transformer (DE-ViT)
     
     Полная архитектура включает:
     - Иерархический backbone с деформируемым вниманием
@@ -702,7 +702,7 @@ class DIViT(nn.Module):
 
 if __name__ == '__main__':
     # Тест модели
-    model = DIViT(img_size=1024, in_chans=3)
+    model = DEViT(img_size=1024, in_chans=3)
     model.eval()
     
     x = torch.randn(2, 3, 1024, 1024)

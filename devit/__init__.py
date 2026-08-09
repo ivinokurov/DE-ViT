@@ -1,5 +1,5 @@
 """
-DI-ViT: Deformation-Invariant Visual Transformer
+DE-ViT: Deformation-Equivariant Visual Transformer
 
 Пакет для реализации деформационно-инвариантного визуального трансформера
 для детекции крон деревьев и их теней на аэрофотоснимках.
@@ -11,11 +11,11 @@ DI-ViT: Deformation-Invariant Visual Transformer
 - Модуль геометрии крыши для сегментации типов поверхности
 - Многокомпонентную функцию потерь
 
-Автор: DI-ViT Team
+Автор: DE-ViT Team
 """
 
-from .models.divit import (
-    DIViT,
+from .models.devit import (
+    DEViT,
     HierarchicalBackbone,
     DeformableAttention,
     DualDeformableAttention,
@@ -27,7 +27,7 @@ from .models.divit import (
 )
 
 from .models.losses import (
-    DIViTLoss,
+    DEViTLoss,
     FocalLoss,
     GIoULoss,
     DeformationSmoothnessLoss,
@@ -53,11 +53,11 @@ from .utils.metrics import (
 )
 
 __version__ = '1.0.0'
-__author__ = 'DI-ViT Team'
+__author__ = 'DE-ViT Team'
 
 __all__ = [
     # Models
-    'DIViT',
+    'DEViT',
     'HierarchicalBackbone',
     'DeformableAttention',
     'DualDeformableAttention',
@@ -68,7 +68,7 @@ __all__ = [
     'ShadowConnectionHead',
     
     # Losses
-    'DIViTLoss',
+    'DEViTLoss',
     'FocalLoss',
     'GIoULoss',
     'DeformationSmoothnessLoss',

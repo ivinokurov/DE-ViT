@@ -1,5 +1,5 @@
 """
-Функции потерь для обучения DI-ViT.
+Функции потерь для обучения DE-ViT.
 
 Многокомпонентная функция потерь:
 L_total = L_det + λ1 * L_def + λ2 * L_cross + λ3 * L_roof + λ4 * L_connect
@@ -332,9 +332,9 @@ class ShadowConnectionLoss(nn.Module):
         return self.bce_loss(predictions, targets.float())
 
 
-class DIViTLoss(nn.Module):
+class DEViTLoss(nn.Module):
     """
-    Полная многокомпонентная функция потерь DI-ViT.
+    Полная многокомпонентная функция потерь DE-ViT.
     
     L_total = L_det + λ1 * L_def + λ2 * L_cross + λ3 * L_roof + λ4 * L_connect
     
@@ -464,7 +464,7 @@ class DIViTLoss(nn.Module):
 
 if __name__ == '__main__':
     # Тест функции потерь
-    loss_fn = DIViTLoss()
+    loss_fn = DEViTLoss()
     
     # Пример выходов модели
     outputs = {

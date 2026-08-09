@@ -1,5 +1,5 @@
 """
-Скрипт обучения DI-ViT.
+Скрипт обучения DE-ViT.
 
 Двухстадийная стратегия обучения:
 1. Предобучение backbone на OAM-TCD для детекции крон
@@ -30,9 +30,9 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.cuda.amp import GradScaler, autocast
 from tqdm import tqdm
 
-# Импорт компонентов DI-ViT
-from models.divit import DIViT
-from models.losses import DIViTLoss
+# Импорт компонентов DE-ViT
+from models.devit import DEViT
+from models.losses import DEViTLoss
 from datasets.datasets import (
     OAHTCDDataset, 
     ISPRSVaihingenDataset, 
@@ -43,7 +43,7 @@ from datasets.datasets import (
 
 
 class Trainer:
-    """Тренер для обучения DI-ViT."""
+    """Тренер для обучения DE-ViT."""
     
     def __init__(self, config: Dict[str, Any]):
         self.config = config
@@ -53,13 +53,13 @@ class Trainer:
         print(f"Using device: {self.device}")
         
         # Инициализация модели
-        self.model = DIViT(
+        self.model = DEViT(
             img_size=config['img_size'],
             in_chans=3
         ).to(self.device)
         
         # Инициализация функции потерь
-        self.criterion = DIViTLoss(
+        self.criterion = DEViTLoss(
             lambda_def=config.get('lambda_def', 0.05),
             lambda_cross=config.get('lambda_cross', 0.5),
             lambda_roof=config.get('lambda_roof', 0.2),
@@ -361,7 +361,7 @@ class Trainer:
 
 def main():
     """Основная функция обучения."""
-    parser = argparse.ArgumentParser(description='DI-ViT Training')
+    parser = argparse.ArgumentParser(description='DE-ViT Training')
     
     # Пути к данным
     parser.add_argument('--oam-tcd-root', type=str, required=True,

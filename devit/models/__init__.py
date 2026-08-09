@@ -1,9 +1,9 @@
 """
-Инициализация пакета моделей DI-ViT.
+Инициализация пакета моделей DE-ViT.
 """
 
-from .divit import (
-    DIViT,
+from .devit import (
+    DEViT,
     HierarchicalBackbone,
     DeformableAttention,
     DualDeformableAttention,
@@ -15,7 +15,7 @@ from .divit import (
 )
 
 from .losses import (
-    DIViTLoss,
+    DEViTLoss,
     FocalLoss,
     GIoULoss,
     DeformationSmoothnessLoss,
@@ -26,7 +26,7 @@ from .losses import (
 
 __all__ = [
     # Модели
-    'DIViT',
+    'DEViT',
     'HierarchicalBackbone',
     'DeformableAttention',
     'DualDeformableAttention',
@@ -37,7 +37,7 @@ __all__ = [
     'ShadowConnectionHead',
     
     # Функции потерь
-    'DIViTLoss',
+    'DEViTLoss',
     'FocalLoss',
     'GIoULoss',
     'DeformationSmoothnessLoss',

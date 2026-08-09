@@ -1,5 +1,5 @@
 """
-Скрипт инференса DI-ViT.
+Скрипт инференса DE-ViT.
 
 Использование обученной модели для предсказания:
 - Детекция крон и теней
@@ -22,12 +22,12 @@ from PIL import Image
 import cv2
 from tqdm import tqdm
 
-# Импорт компонентов DI-ViT
-from models.divit import DIViT
+# Импорт компонентов DE-ViT
+from models.devit import DEViT
 
 
-class DIViTInference:
-    """Класс для инференса DI-ViT."""
+class DEViTInference:
+    """Класс для инференса DE-ViT."""
     
     def __init__(self, checkpoint_path: str, device: str = 'cuda',
                  img_size: int = 1024, confidence_threshold: float = 0.5):
@@ -54,11 +54,11 @@ class DIViTInference:
         logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
         
-    def _load_model(self, checkpoint_path: str) -> DIViT:
+    def _load_model(self, checkpoint_path: str) -> DEViT:
         """Загрузка модели из чекпоинта."""
         checkpoint = torch.load(checkpoint_path, map_location='cpu')
         
-        model = DIViT(img_size=self.img_size, in_chans=3)
+        model = DEViT(img_size=self.img_size, in_chans=3)
         model.load_state_dict(checkpoint['model_state_dict'])
         model.to(self.device)
         
@@ -378,7 +378,7 @@ class DIViTInference:
 
 def main():
     """Основная функция инференса."""
-    parser = argparse.ArgumentParser(description='DI-ViT Inference')
+    parser = argparse.ArgumentParser(description='DE-ViT Inference')
     
     parser.add_argument('--checkpoint', type=str, required=True,
                         help='Путь к чекпоинту модели')
@@ -400,7 +400,7 @@ def main():
     args = parser.parse_args()
     
     # Инициализация инференса
-    inferencer = DIViTInference(
+    inferencer = DEViTInference(
         checkpoint_path=args.checkpoint,
         device=args.device,
         img_size=args.img_size,
