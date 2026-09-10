@@ -49,11 +49,13 @@ devit/
 ```
 ## Установка
 
+```bash
 # Установка зависимостей
 pip install -r divit/requirements.txt
 
 # Для разработки (опционально)
 pip install pytest wandb tensorboard
+```
 
 ## Подготовка данных
 
@@ -71,6 +73,7 @@ data/
     └── annotations/
 ```
 Формат аннотации (JSON):
+```json
 {
   "gsd": 0.15,
   "sun_azimuth": 2.356,
@@ -97,7 +100,7 @@ data/
   ],
   "ridge_lines": [[x1, y1], [x2, y2]]
 }
-
+```
 Типы поверхностей крыши:
 - 0: Грунт
 - 1: Плоская крыша
@@ -105,7 +108,7 @@ data/
 - 3: Конёк
 
 ## Обучение
-
+```bash
 Двухстадийное обучение:
 
 ### Стадия 1: Предобучение backbone на OAM-TCD
@@ -138,9 +141,10 @@ python divit/train.py \
 - --stage: Этап обучения (pretrain или finetune)
 - --tasks: Список задач (detection, segmentation, azimuth, roof)
 - --resume: Путь к чекпоинту для продолжения обучения
+```
 
 ## Инференс
-
+```bash
 python divit/inference.py \
   --checkpoint ./outputs/stage2/best_model.pth \
   --image ./test_image.png \
@@ -158,10 +162,11 @@ python divit/inference.py \
 - --sun-elevation: Высота солнца (радианы)
 - --gsd: GSD снимка (м/пиксель)
 - --vis-fields: Визуализировать поля деформации Δ_tree и Δ_shadow
-
+```
 ## Запуск тестов
-
+```bash
 pytest divit/tests/ -v
+```
 
 ## Ключевые компоненты
 
