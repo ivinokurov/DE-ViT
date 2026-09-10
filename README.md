@@ -58,7 +58,7 @@ pip install pytest wandb tensorboard
 ## Подготовка данных
 
 Ожидаемая структура датасета:
-```
+``` 
 data/
 ├── oam-tcd/           # OAM-TCD: кроны деревьев
 │   ├── images/
