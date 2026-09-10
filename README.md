@@ -28,7 +28,6 @@ devit/
 ├── __init__.py          # Инициализация пакета devit
 ├── train.py             # Скрипт обучения модели (двухстадийный)
 ├── inference.py         # Скрипт инференса и визуализации
-├── README.md            # Документация
 ├── configs/             # Конфигурации модели
 │   └── __init__.py      # Параметры архитектуры и обучения
 ├── datasets/            # Работа с датасетами
@@ -38,22 +37,25 @@ devit/
 │   ├── __init__.py      # Импорт компонентов модели
 │   └── divit.py         # Архитектура DE-ViT (backbone, головки, внимание)
 │   └── losses.py        # Многокомпонентная функция потерь
-├── utils/               # Вспомогательные утилиты
-│   ├── __init__.py      # Инициализация модуля utils
-│   └── metrics.py       # Метрики качества (mAP, FPR, FNR, bootstrap)
-└── images/              # Изображения архитектуры и результаты
-    ├── example1.pdf     # Визуализация этапов работы трансформера (пример №1)
-    ├── example2.pdf     # Визуализация этапов работы трансформера (пример №2) 
-    ├── crown_shadow.pdf # Геометрическая интерпретация постановки задачи 
-    └── architecture.pdf # Схема общей архитектуры DE-ViT
+└── utils/               # Вспомогательные утилиты
+    ├── __init__.py      # Инициализация модуля utils
+    └── metrics.py       # Метрики качества (mAP, FPR, FNR, bootstrap)
+images/                  # Изображения архитектуры и результаты
+├── example1.pdf         # Визуализация этапов работы трансформера (пример №1)
+├── example2.pdf         # Визуализация этапов работы трансформера (пример №2) 
+├── crown_shadow.pdf     # Геометрическая интерпретация постановки задачи 
+└── architecture.pdf     # Схема общей архитектуры DE-ViT
+README.md                # Документация
 ```
 ## Установка
 
+```bash
 # Установка зависимостей
 pip install -r divit/requirements.txt
 
 # Для разработки (опционально)
 pip install pytest wandb tensorboard
+```
 
 ## Подготовка данных
 
@@ -71,6 +73,7 @@ data/
     └── annotations/
 ```
 Формат аннотации (JSON):
+```json
 {
   "gsd": 0.15,
   "sun_azimuth": 2.356,
@@ -97,7 +100,7 @@ data/
   ],
   "ridge_lines": [[x1, y1], [x2, y2]]
 }
-
+```
 Типы поверхностей крыши:
 - 0: Грунт
 - 1: Плоская крыша
@@ -105,7 +108,7 @@ data/
 - 3: Конёк
 
 ## Обучение
-
+```bash
 Двухстадийное обучение:
 
 ### Стадия 1: Предобучение backbone на OAM-TCD
@@ -138,9 +141,10 @@ python divit/train.py \
 - --stage: Этап обучения (pretrain или finetune)
 - --tasks: Список задач (detection, segmentation, azimuth, roof)
 - --resume: Путь к чекпоинту для продолжения обучения
+```
 
 ## Инференс
-
+```bash
 python divit/inference.py \
   --checkpoint ./outputs/stage2/best_model.pth \
   --image ./test_image.png \
@@ -158,10 +162,11 @@ python divit/inference.py \
 - --sun-elevation: Высота солнца (радианы)
 - --gsd: GSD снимка (м/пиксель)
 - --vis-fields: Визуализировать поля деформации Δ_tree и Δ_shadow
-
+```
 ## Запуск тестов
-
+```bash
 pytest divit/tests/ -v
+```
 
 ## Ключевые компоненты
 
