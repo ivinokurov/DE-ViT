@@ -35,7 +35,7 @@ devit/
 │   └── datasets.py      # Загрузчики OAM-TCD, ISPRS Vaihingen, Ciyutuo Village
 ├── models/              # Архитектура модели и функции потерь
 │   ├── __init__.py      # Импорт компонентов модели
-│   └── divit.py         # Архитектура DE-ViT (backbone, головки, внимание)
+│   ├── devit.py         # Архитектура DE-ViT (backbone, головки, внимание)
 │   └── losses.py        # Многокомпонентная функция потерь
 └── utils/               # Вспомогательные утилиты
     ├── __init__.py      # Инициализация модуля utils
