@@ -58,6 +58,7 @@ pip install pytest wandb tensorboard
 ## Подготовка данных
 
 Ожидаемая структура датасета:
+```
 data/
 ├── oam-tcd/           # OAM-TCD: кроны деревьев
 │   ├── images/
@@ -68,7 +69,7 @@ data/
 └── ciyutuo/           # Ciyutuo Village: кроны, тени, крыши
     ├── images/
     └── annotations/
-
+```
 Формат аннотации (JSON):
 {
   "gsd": 0.15,
