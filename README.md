@@ -47,6 +47,7 @@ images/                  # Изображения архитектуры и ре
 └── architecture.pdf     # Схема общей архитектуры DE-ViT
 README.md                # Документация
 ```
+
 ## Установка
 
 ```bash
@@ -108,10 +109,11 @@ data/
 - 3: Конёк
 
 ## Обучение
-```bash
+
 Двухстадийное обучение:
 
-### Стадия 1: Предобучение backbone на OAM-TCD
+**Стадия 1: Предобучение backbone на OAM-TCD**
+```bash
 python divit/train.py \
   --data-root ./data/oam-tcd \
   --output-dir ./outputs/stage1 \
@@ -120,8 +122,10 @@ python divit/train.py \
   --lr 1e-4 \
   --stage pretrain \
   --tasks detection
+```
 
-### Стадия 2: Донастройка на комбинированном датасете
+**Стадия 2: Донастройка на комбинированном датасете**
+```bash
 python divit/train.py \
   --data-root ./data \
   --output-dir ./outputs/stage2 \
@@ -131,17 +135,17 @@ python divit/train.py \
   --stage finetune \
   --tasks detection segmentation azimuth roof \
   --resume ./outputs/stage1/best_model.pth
+```
 
 Параметры:
-- --data-root: Путь к данным
-- --output-dir: Директория для чекпоинтов и логов
-- --epochs: Количество эпох обучения
-- --batch-size: Размер батча
-- --lr: Начальный learning rate
-- --stage: Этап обучения (pretrain или finetune)
-- --tasks: Список задач (detection, segmentation, azimuth, roof)
-- --resume: Путь к чекпоинту для продолжения обучения
-```
+- `--data-root`: Путь к данным
+- `--output-dir`: Директория для чекпоинтов и логов
+- `--epochs`: Количество эпох обучения
+- `--batch-size`: Размер батча
+- `--lr`: Начальный learning rate
+- `--stage`: Этап обучения (`pretrain` или `finetune`)
+- `--tasks`: Список задач (`detection`, `segmentation`, `azimuth`, `roof`)
+- `--resume`: Путь к чекпоинту для продолжения обучения
 
 ## Инференс
 ```bash
@@ -153,16 +157,17 @@ python divit/inference.py \
   --sun-elevation 0.785 \
   --gsd 0.15 \
   --vis-fields
+```
 
 Параметры:
-- --checkpoint: Путь к чекпоинту модели
-- --image: Путь к изображению или директории
-- --output-dir: Директория для результатов
-- --sun-azimuth: Азимут солнца (радианы)
-- --sun-elevation: Высота солнца (радианы)
-- --gsd: GSD снимка (м/пиксель)
-- --vis-fields: Визуализировать поля деформации Δ_tree и Δ_shadow
-```
+- `--checkpoint`: Путь к чекпоинту модели
+- `--image`: Путь к изображению или директории
+- `--output-dir`: Директория для результатов
+- `--sun-azimuth`: Азимут солнца (радианы)
+- `--sun-elevation`: Высота солнца (радианы)
+- `--gsd`: GSD снимка (м/пиксель)
+- `--vis-fields`: Визуализировать поля деформации Δ_tree и Δ_shadow
+
 ## Запуск тестов
 ```bash
 pytest divit/tests/ -v
@@ -191,7 +196,9 @@ pytest divit/tests/ -v
 - Учёт глобального контекста освещения сцены
 
 ### Функция потерь
-L_total = L_det + 0.05·L_def + 0.5·L_cross + 0.2·L_roof + 0.3·L_connect
+$$
+L_{total} = L_{det} + 0.05 \cdot L_{def} + 0.5 \cdot L_{cross} + 0.2 \cdot L_{roof} + 0.3 \cdot L_{connect}
+$$
 
 Компоненты:
 - L_det: Focal Loss + L1 bbox + GIoU (детекция объектов)
@@ -210,7 +217,9 @@ L_total = L_det + 0.05·L_def + 0.5·L_cross + 0.2·L_roof + 0.3·L_connect
 
 ### Приближённая локальная деформационная эквивариантность
 Архитектура DE-ViT гарантирует, что для любой гладкой деформации T:
-F(T(I)) ≈ T_*(F(I))
+$$
+F(T(I)) \approx T_*(F(I))
+$$
 с точностью до ошибки интерполяции первого порядка. Это достигается за счёт:
 - Преобразования поля смещения как тензора
 - Использования деформированных относительных координат в PE
