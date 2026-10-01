@@ -1,7 +1,7 @@
 # DE-ViT (Deformation-Equivariant Visual Transformer) — детекция крон, теней и сегментация крыш
 
-![Release](https://img.shields.io/badge/release-v1.0.2-blue)
-![License](https://img.shields.io/badge/license-Apache--2.0-green)
+[![Release](https://img.shields.io/badge/release-v2.11.0-blue)](#установка)
+[![License](https://img.shields.io/badge/license-Apache--2.0-green)](#лицензия)
 
 Модель DE-ViT предназначена для многозадачного анализа аэроснимков: детекции крон деревьев и их теней, регрессии ограничивающих рамок, оценки солнечного азимута и семантической сегментации типов поверхности крыши. 
 
@@ -28,7 +28,6 @@
 - [Датасеты](#датасеты)
 - [Требования к оборудованию](#требования-к-оборудованию)
 - [Лицензия](#лицензия)
-- [Цитирование](#цитирование)
 
 ## Структура проекта
 ```text
