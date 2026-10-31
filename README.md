@@ -33,33 +33,33 @@
 ## Структура проекта
 ```text
 devit/
-├── __init__.py          # Инициализация пакета devit
-├── train.py             # Скрипт обучения модели (двухстадийный)
-├── inference.py         # Скрипт инференса и визуализации
-├── requirements.txt     # Зависимости Python
-├── configs/             # Конфигурации модели
-│   └── __init__.py      # Параметры архитектуры и обучения
-├── datasets/            # Работа с датасетами
-│   ├── __init__.py      # Инициализация модуля datasets
-│   └── datasets.py      # Загрузчики OAM-TCD, ISPRS, Ciyutuo, Synthetic
-├── models/              # Архитектура модели и функции потерь
-│   ├── __init__.py      # Импорт компонентов модели
-│   ├── devit.py         # Архитектура DE-ViT (backbone, головки, внимание)
-│   └── losses.py        # Многокомпонентная функция потерь
-├── utils/               # Вспомогательные утилиты
-│   ├── __init__.py      # Инициализация модуля utils
-│   └── metrics.py       # Метрики качества (mAP, FPR, FNR, Custom Eval Protocol)
-├── tests/               # Юнит-тесты
-│   └── test_model.py    # Тесты для модели DE-ViT
-├── images/              # Изображения из статьи
+├── __init__.py                 # Инициализация пакета devit
+├── train.py                    # Скрипт обучения модели (двухстадийный)
+├── inference.py                # Скрипт инференса и визуализации
+├── requirements.txt            # Зависимости Python
+├── configs/                    # Конфигурации модели
+│   └── __init__.py             # Параметры архитектуры и обучения
+├── datasets/                   # Работа с датасетами
+│   ├── __init__.py             # Инициализация модуля datasets
+│   └── datasets.py             # Загрузчики OAM-TCD, ISPRS, Ciyutuo, Synthetic
+├── models/                     # Архитектура модели и функции потерь
+│   ├── __init__.py             # Импорт компонентов модели
+│   ├── devit.py                # Архитектура DE-ViT (backbone, головки, внимание)
+│   └── losses.py               # Многокомпонентная функция потерь
+├── utils/                      # Вспомогательные утилиты
+│   ├── __init__.py             # Инициализация модуля utils
+│   └── metrics.py              # Метрики качества (mAP, FPR, FNR, Custom Eval Protocol)
+├── tests/                      # Юнит-тесты
+│   └── test_model.py           # Тесты для модели DE-ViT
+├── images/                     # Изображения из статьи
 │   ├── fig1_geometry.pdf       # Геометрическая интерпретация (постановка задачи)
-│   ├── fig2_architecture.pdf   # Схема общей архитектуры DE-ViT
+│   ├── fig2_architecture.jpg   # Схема общей архитектуры DE-ViT
 │   ├── fig3_curves.pdf         # F1-мера и Precision-Recall кривые
 │   ├── stage1.jpg              # Стадия 1
 │   ├── stage2.jpg              # Стадия 2
 │   ├── stage3.jpg              # Стадия 3
 │   └── fig4_linking.pdf        # Иллюстрация механизма связывания фрагментов
-└── README.md            # Документация
+└── README.md                   # Документация
 ```
 
 ## Установка
