@@ -53,7 +53,7 @@ devit/
 │   └── test_model.py           # Тесты для модели DE-ViT
 ├── images/                     # Изображения из статьи
 │   ├── fig1_geometry.pdf       # Геометрическая интерпретация (постановка задачи)
-│   ├── fig2_architecture.jpg   # Схема общей архитектуры DE-ViT
+│   ├── architecture.jpg        # Схема общей архитектуры DE-ViT
 │   ├── fig3_curves.pdf         # F1-мера и Precision-Recall кривые
 │   ├── stage1.jpg              # Стадия 1
 │   ├── stage2.jpg              # Стадия 2
